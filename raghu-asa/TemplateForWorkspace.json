@@ -169,7 +169,7 @@
 				"parameters": {
 					"test": {
 						"type": "string",
-						"defaultValue": "123"
+						"defaultValue": "1234"
 					}
 				},
 				"variables": {
