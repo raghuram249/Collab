@@ -119,6 +119,10 @@
 			"ClientSecret": {
 				"type": "String",
 				"defaultValue": "erc8Q~JOeyySuFyLLQAYYHSNLl-WzJ-bQ_t0ncF4"
+			},
+			"ClientID": {
+				"type": "String",
+				"defaultValue": "f9a1b24a-d23f-4753-b980-8083e1336f0b"
 			}
 		},
 		"annotations": [],
