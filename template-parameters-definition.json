@@ -1,1 +1,19 @@
-
+{
+ "Microsoft.Synapse/workspaces/pipelines": {
+        "properties": {
+            "activities": [{
+                "typeProperties": {
+                    "waitTimeInSeconds": "-::int",
+                    "headers": "=::object",
+                    "activities": [
+                        {
+                            "typeProperties": {
+                                "url": "-:-webUrl:string"
+                            }
+                        }
+                    ]
+                }
+            }]
+        }
+    }
+}
