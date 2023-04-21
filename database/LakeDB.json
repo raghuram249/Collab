@@ -1,0 +1,25 @@
+{
+	"name": "LakeDB",
+	"properties": {
+		"Name": "LakeDB",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://raghufs@raghuadls.dfs.core.windows.net/LakeDB",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "raghu-asa-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "eed9aaf0-4e89-4e85-8f77-11a394353250"
+	},
+	"type": "DATABASE"
+}

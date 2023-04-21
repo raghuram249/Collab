@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseDelimitedTextFormat') \n\tCREATE EXTERNAL FILE FORMAT [SynapseDelimitedTextFormat] \n\tWITH ( FORMAT_TYPE = DELIMITEDTEXT ,\n\t       FORMAT_OPTIONS (\n\t\t\tFIELD_TERMINATOR = ',',\n\t\t\tSTRING_DELIMITER='\"',\n\t\t\t FIRST_ROW=2\n\t\t\t))\nGO\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'raghufs_raghuadls_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [raghufs_raghuadls_dfs_core_windows_net] \n\tWITH (\n\t\tLOCATION = 'abfss://raghufs@raghuadls.dfs.core.windows.net' \n\t)\nGO\n\nCREATE EXTERNAL TABLE test.csv (\n\t[Postcode] nvarchar(4000),\n\t[In Use] nvarchar(4000),\n\t[Latitude] DECIMAL(9,6),\n\t[Longitude] DECIMAL(9,6),\n\t[Easting] bigint,\n\t[Northing] bigint,\n\t[Grid Ref] nvarchar(4000),\n\t[County] nvarchar(4000),\n\t[District] nvarchar(4000),\n\t[Ward] nvarchar(4000),\n\t[District Code] nvarchar(4000),\n\t[Ward Code] nvarchar(4000),\n\t[Country] nvarchar(4000),\n\t[County Code] nvarchar(4000),\n\t[Constituency] nvarchar(4000),\n\t[Introduced] nvarchar(4000),\n\t[Terminated] nvarchar(4000),\n\t[Parish] nvarchar(4000),\n\t[National Park] nvarchar(4000),\n\t[Population] nvarchar(4000),\n\t[Households] nvarchar(4000),\n\t[Built up area] nvarchar(4000),\n\t[Built up sub-division] nvarchar(4000),\n\t[Lower layer super output area] nvarchar(4000),\n\t[Rural/urban] nvarchar(4000),\n\t[Region] nvarchar(4000),\n\t[Altitude] bigint,\n\t[London zone] nvarchar(4000),\n\t[LSOA Code] nvarchar(4000),\n\t[Local authority] nvarchar(4000),\n\t[MSOA Code] nvarchar(4000),\n\t[Middle layer super output area] nvarchar(4000),\n\t[Parish Code] nvarchar(4000),\n\t[Census output area] nvarchar(4000),\n\t[Constituency Code] nvarchar(4000),\n\t[Index of Multiple Deprivation] bigint,\n\t[Quality] bigint,\n\t[User Type] bigint,\n\t[Last updated] nvarchar(4000),\n\t[Nearest station] nvarchar(4000),\n\t[Distance to station] float,\n\t[Postcode area] nvarchar(4000),\n\t[Postcode district] nvarchar(4000),\n\t[Police force] nvarchar(4000),\n\t[Water company] nvarchar(4000),\n\t[Plus Code] nvarchar(4000),\n\t[Average Income] nvarchar(4000),\n\t[Sewage Company] nvarchar(4000),\n\t[Travel To Work Area] nvarchar(4000),\n\t[ITL level 2] nvarchar(4000),\n\t[ITL level 3] nvarchar(4000),\n\t[UPRNs] nvarchar(4000),\n\t[Distance to sea] float\n\t)\n\tWITH (\n\tLOCATION = 'postcodes_test.csv',\n\tDATA_SOURCE = [raghufs_raghuadls_dfs_core_windows_net],\n\tFILE_FORMAT = [SynapseDelimitedTextFormat]\n\t)\nGO\n\n\nSELECT TOP 100 * FROM test.csv\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "raghuadw",
+				"poolName": "raghuadw"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

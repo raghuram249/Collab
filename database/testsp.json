@@ -1,0 +1,25 @@
+{
+	"name": "testsp",
+	"properties": {
+		"Name": "testsp",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://raghufs@raghuadls.dfs.core.windows.net/testsp",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "raghu-asa-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "275b4efe-913a-4855-bdac-39a84be5edb6"
+	},
+	"type": "DATABASE"
+}

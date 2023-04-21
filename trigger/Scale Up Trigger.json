@@ -1,0 +1,29 @@
+{
+	"name": "Scale Up Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ScaleDW",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Month",
+				"interval": 1,
+				"startTime": "2022-10-10T12:00:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"monthDays": [
+						31
+					]
+				}
+			}
+		}
+	}
+}
