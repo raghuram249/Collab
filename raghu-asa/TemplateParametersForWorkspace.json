@@ -23,17 +23,28 @@
 		"raghu-asa-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:raghu-asa.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"value": "https://raghuadls24.dfs.core.windows.net/"
+		"ScaleDW_properties_0_typeProperties": {
+			"value": {
+				"Content-Type": "application/x-www-form-urlencoded"
+			}
 		},
-		"AzureDataLakeStorage2_properties_typeProperties_url": {
-			"value": "https://raghuadls24.dfs.core.windows.net/"
+		"ScaleDW_properties_1_typeProperties": {
+			"value": {
+				"Content-Type": "application/json",
+				"Authorization": {
+					"value": "@concat('Bearer ', activity('Bearer Token').output.access_token)",
+					"type": "Expression"
+				}
+			}
 		},
-		"linkedService1_properties_typeProperties_url": {
-			"value": "https://raghuadls24.dfs.core.windows.net/"
-		},
-		"raghu-asa-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"value": "https://raghuadls.dfs.core.windows.net"
+		"ScaleDW_properties_2_typeProperties": {
+			"value": {
+				"Content-Type": "application/json",
+				"Authorization": {
+					"value": "@concat('Bearer ', activity('Bearer Token').output.access_token)",
+					"type": "Expression"
+				}
+			}
 		}
 	}
 }

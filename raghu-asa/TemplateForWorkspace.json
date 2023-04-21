@@ -32,21 +32,31 @@
 			"metadata": "Secure string for 'connectionString' of 'raghu-asa-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:raghu-asa.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://raghuadls24.dfs.core.windows.net/"
+		"ScaleDW_properties_0_typeProperties": {
+			"type": "object",
+			"defaultValue": {
+				"Content-Type": "application/x-www-form-urlencoded"
+			}
 		},
-		"AzureDataLakeStorage2_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://raghuadls24.dfs.core.windows.net/"
+		"ScaleDW_properties_1_typeProperties": {
+			"type": "object",
+			"defaultValue": {
+				"Content-Type": "application/json",
+				"Authorization": {
+					"value": "@concat('Bearer ', activity('Bearer Token').output.access_token)",
+					"type": "Expression"
+				}
+			}
 		},
-		"linkedService1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://raghuadls24.dfs.core.windows.net/"
-		},
-		"raghu-asa-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://raghuadls.dfs.core.windows.net"
+		"ScaleDW_properties_2_typeProperties": {
+			"type": "object",
+			"defaultValue": {
+				"Content-Type": "application/json",
+				"Authorization": {
+					"value": "@concat('Bearer ', activity('Bearer Token').output.access_token)",
+					"type": "Expression"
+				}
+			}
 		}
 	},
 	"variables": {
@@ -78,9 +88,7 @@
 								"type": "IntegrationRuntimeReference"
 							},
 							"method": "POST",
-							"headers": {
-								"Content-Type": "application/x-www-form-urlencoded"
-							},
+							"headers": "[parameters('ScaleDW_properties_0_typeProperties')]",
 							"body": {
 								"value": "@concat('grant_type=client_credentials&resource=https://management.azure.com/&client_id=',variables('ClientID'),\n'&client_secret=',encodeUriComponent(variables('ClientSecret')))\n",
 								"type": "Expression"
@@ -113,13 +121,7 @@
 								"type": "IntegrationRuntimeReference"
 							},
 							"method": "GET",
-							"headers": {
-								"Content-Type": "application/json",
-								"Authorization": {
-									"value": "@concat('Bearer ', activity('Bearer Token').output.access_token)",
-									"type": "Expression"
-								}
-							},
+							"headers": "[parameters('ScaleDW_properties_1_typeProperties')]",
 							"body": {
 								"value": "{\n  \"location\": \"East US\",\n  \"tags\": {},\n  \"sku\": {\n    \"tier\": \"\",\n    \"name\": \"DW100c\"\n  },\n  \"properties\": {\n    \"maxSizeBytes\": 0,\n    \"collation\": \"\",\n    \"restorePointInTime\": \"1970-01-01T00:00:00.000Z\"\n  }\n}\n",
 								"type": "Expression"
@@ -152,13 +154,7 @@
 								"type": "IntegrationRuntimeReference"
 							},
 							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json",
-								"Authorization": {
-									"value": "@concat('Bearer ', activity('Bearer Token').output.access_token)",
-									"type": "Expression"
-								}
-							},
+							"headers": "[parameters('ScaleDW_properties_2_typeProperties')]",
 							"body": {
 								"value": "@concat('grant_type=client_credentials&resource=https://management.azure.com/&client_id=',variables('ClientID'),\n'&client_secret=',encodeUriComponent(variables('ClientSecret')))",
 								"type": "Expression"
@@ -274,7 +270,10 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+					"connectionString": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					}
 				},
 				"connectVia": {
 					"referenceName": "IntegrationRuntime1",
@@ -293,7 +292,10 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage2_connectionString')]"
+					"connectionString": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					}
 				},
 				"connectVia": {
 					"referenceName": "AutoResolveIntegrationRuntime",
@@ -312,7 +314,7 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]",
+					"url": "https://raghuadls24.dfs.core.windows.net/",
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
@@ -335,7 +337,7 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]",
+					"url": "https://raghuadls24.dfs.core.windows.net/",
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
@@ -358,7 +360,7 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('linkedService1_properties_typeProperties_url')]",
+					"url": "https://raghuadls24.dfs.core.windows.net/",
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('linkedService1_accountKey')]"
@@ -386,7 +388,10 @@
 				"annotations": [],
 				"type": "AzureSqlDW",
 				"typeProperties": {
-					"connectionString": "[parameters('raghu-asa-WorkspaceDefaultSqlServer_connectionString')]"
+					"connectionString": {
+						"type": "SecureString",
+						"value": "[parameters('raghu-asa-WorkspaceDefaultSqlServer_connectionString')]"
+					}
 				},
 				"connectVia": {
 					"referenceName": "AutoResolveIntegrationRuntime",
@@ -405,7 +410,7 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('raghu-asa-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+					"url": "https://raghuadls.dfs.core.windows.net"
 				},
 				"connectVia": {
 					"referenceName": "AutoResolveIntegrationRuntime",
