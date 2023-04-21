@@ -109,6 +109,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"test": {
+				"type": "string",
+				"defaultValue": "123"
+			}
+		},
 		"variables": {
 			"ClientID": {
 				"type": "String",
