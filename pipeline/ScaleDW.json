@@ -107,26 +107,6 @@
 						"type": "Expression"
 					}
 				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Pause DB",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "test",
-					"value": {
-						"value": "@pipeline().parameters.test",
-						"type": "Expression"
-					}
-				}
 			}
 		],
 		"variables": {
