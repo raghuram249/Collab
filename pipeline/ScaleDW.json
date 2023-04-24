@@ -129,12 +129,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"test": {
-				"type": "string",
-				"defaultValue": "f9a1b24a-d23f-4753-b980-8083e1336f0b"
-			}
-		},
 		"variables": {
 			"ClientSecret": {
 				"type": "String",
