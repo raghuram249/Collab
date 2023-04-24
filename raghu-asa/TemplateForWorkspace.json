@@ -169,7 +169,7 @@
 				"variables": {
 					"ClientSecret": {
 						"type": "String",
-						"defaultValue": "erc8Q~JOeyySuFyLLQAYYHSNLl-WzJ-bQ_t0ncF4"
+					
 					},
 					"ClientID": {
 						"type": "String",
