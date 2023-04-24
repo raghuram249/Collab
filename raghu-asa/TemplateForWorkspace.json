@@ -171,8 +171,7 @@
 						"type": "String"
 					},
 					"ClientID": {
-						"type": "String",
-						"defaultValue": "f9a1b24a-d23f-4753-b980-8083e1336f0b"
+						"type": "String"
 					},
 					"test": {
 						"type": "String"
