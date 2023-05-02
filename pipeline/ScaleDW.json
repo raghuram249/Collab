@@ -107,8 +107,31 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Pause DB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "test",
+					"value": "24"
+				}
 			}
 		],
+		"parameters": {
+			"test": {
+				"type": "string",
+				"defaultValue": "test"
+			}
+		},
 		"variables": {
 			"ClientSecret": {
 				"type": "String"
