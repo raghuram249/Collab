@@ -126,12 +126,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"test": {
-				"type": "string",
-				"defaultValue": "test"
-			}
-		},
 		"variables": {
 			"ClientSecret": {
 				"type": "String"
